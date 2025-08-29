@@ -1,0 +1,98 @@
+5 specific differences between your two programmes
+Why the clean version is better
+Which version was easier to understand and why
+
+
+In general, the clean version has easier interface for user, shorter structure for a colleague, related to the difference (1) and (2). The clean is strong to edge cases, as mentioned in (3) (4) and (5).
+
+
+(1)A user has 5 options in the messy program, while 3 in the clean one. 
+
+
+The interface of messy program seems;
+=== Shopping List Manager ===
+1. Add item
+2. View items
+3. Remove item
+4. Count items
+5. Exit
+Choose option: 
+
+
+Besides, one of clean program seems;
+=== Shopping List Manager ===
+0 of 6 items in your cart []
+1. Add item
+2. Remove item
+3. Exit
+Choose option: 
+
+
+In the clean one, listed items and item count are always displayed, for example;
+1 of 6 items in your cart ['Milk']
+
+
+A user has less options and is less likely to miss.
+
+
+(2)Item limitation is defined in different ways.
+In the messy version, I coded item1=””, item2=””, … until the end in multiple chunks. 
+
+
+In the clean version, I used list;
+items = []
+max_items = 6
+
+
+It shortened and clarified each chunk. There are 95 lines in the messy, while 49 in the clean.
+
+
+(3)Edge case; nothing is typed
+
+
+If a user typed “”(nothing) or “ “(there is only space), it is recognised as an item in the messy program, besides the clean one outputs “Please enter a valid item.”, because of the following code;
+       if new_item == "":
+          print("Please enter a valid item.")
+
+
+If “ “(only space) is typed, it is also recognised as “”(nothing) because of the following improvement, removing code.
+
+
+(4)Edge case: space at edge
+
+
+Whitespace problem, where a user types “ Milk” or “Milk “, is another edge case.
+The messy program does nothing to this case.
+The clean one clarifys those whitespaces, with code;
+.strip()
+
+
+So the clean one is strong to edge case of “nothing typed” and “space typed”.
+
+
+(5)Edge case: too long name
+
+
+The clean program enforces 10-character limit  in “Add item” with the following code;
+
+
+        elif len(new_item) > 10:
+          print("Item name must be less than 10 characters.")  
+
+
+Besides, the messy one does not have such characte limit.
+The clean code can avoid too long name.
+
+
+What you learnt about good coding practices
+
+It is important
+to ask the explanation for a code and concept which AI suggests, 
+to understand and
+to sometimes refuse the suggestion of AI.
+
+I actually decided to refuse suggested code of my AI;
+In order to shorten a code regarding to characters of an item, it suggested “skip helper function” (is_valid_length). But I found the code did not reduce code length and I decided not to use it.
+
+AI sometimes tells incorrect things.
+To refuse suggestion of AI, it is important to ask the explanation and understand.
